@@ -1,0 +1,194 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<meta name="theme-color" content="#05051a">
+<title>For Aditi</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Abril+Fatface&family=Cormorant+Garamond:ital,wght@0,500;0,600;1,500&display=swap" rel="stylesheet">
+<style>
+:root {
+  --ink: #05051a;
+  --indigo: #1a1170;
+  --violet: #6a3be0;
+  --glow: #ffb8c9;
+  --cream: #fff1dc;
+  box-sizing: border-box;
+  padding-top: env(safe-area-inset-top, 0px);
+  padding-bottom: env(safe-area-inset-bottom, 0px);
+  color-scheme: dark;
+}
+*, *::before, *::after { box-sizing: inherit; }
+html { scroll-padding-top: env(safe-area-inset-top, 0px); }
+body {
+  margin: 0;
+  background: var(--ink);
+  background: linear-gradient(180deg, #05051a 0%, #0c0a3d 35%, #231585 70%, #5a2fc4 100%);
+  color: var(--cream);
+  font-family: "Cormorant Garamond", Georgia, "Times New Roman", serif;
+  overflow-x: hidden;
+}
+.stars { position: fixed; inset: 0; overflow: hidden; pointer-events: none; z-index: 0; }
+.sl { position: absolute; inset: 0; transform: translate3d(0, var(--y, 0px), 0); will-change: transform; }
+.star { position: absolute; border-radius: 50%; background: #fff; animation: tw 4s ease-in-out infinite; }
+@keyframes tw { 0%, 100% { opacity: var(--o, .8); } 50% { opacity: .2; } }
+
+.story { position: relative; z-index: 1; height: 320vh; }
+.stage { position: sticky; top: 0; height: 100vh; height: 100svh; overflow: hidden; --p: 0; display: flex; flex-direction: column; align-items: center; justify-content: center; text-align: center; }
+.small { position: relative; z-index: 4; font-size: clamp(1.4rem, 4.2vw, 2.4rem); font-weight: 600; margin: 0; color: var(--cream); text-shadow: 0 0 18px rgba(255,200,220,.7); }
+h1 {
+  font-family: "Abril Fatface", "Didot", "Bodoni MT", Georgia, serif;
+  font-weight: 400;
+  font-size: clamp(4.6rem, 25vw, 15rem);
+  line-height: .95;
+  letter-spacing: -.01em;
+  margin: 0;
+  color: var(--cream);
+  text-shadow: 0 0 10px rgba(255,214,230,.9), 0 0 38px rgba(255,150,200,.6), 0 0 90px rgba(120,80,255,.7);
+  position: relative; z-index: 4;
+  transform: scale(calc(.94 + var(--p) * .08));
+}
+.hint { position: absolute; bottom: calc(1.8rem + env(safe-area-inset-bottom, 0px)); margin: 0; font-style: italic; font-size: 1.1rem; opacity: calc(1 - var(--p) * 3); }
+.hand { position: absolute; width: min(86vw, 640px); height: auto; overflow: visible; z-index: 3; filter: drop-shadow(0 0 14px rgba(255,170,205,.6)) drop-shadow(0 0 46px rgba(110,70,235,.7)); animation: float 6s ease-in-out infinite; }
+.hand.b { animation-delay: -3s; }
+@keyframes float { 0%, 100% { translate: 0 0; rotate: 0deg; } 50% { translate: 0 -9px; rotate: .6deg; } }
+.spark { position: absolute; z-index: 4; left: 50%; top: 50%; width: 10px; height: 10px; margin: -5px; background: #fff; clip-path: polygon(50% 0, 62% 38%, 100% 50%, 62% 62%, 50% 100%, 38% 62%, 0 50%, 38% 38%); opacity: clamp(0, calc((var(--p) - .8) * 5), 1); transform: translate(var(--sx), var(--sy)) scale(var(--ss)); filter: drop-shadow(0 0 6px #ffd0e0); animation: tw 2.4s ease-in-out infinite; }
+.hand.a { top: 18%; right: -4%; transform: translate(calc((1 - var(--p)) * 55vw - 9vw * var(--p)), calc((1 - var(--p)) * -38vh + 5vh * var(--p))); }
+.hand.b { bottom: 12%; left: -4%; transform: translate(calc((1 - var(--p)) * -55vw + 9vw * var(--p)), calc((1 - var(--p)) * 38vh - 5vh * var(--p))); }
+@media (max-aspect-ratio: 1/1) {
+  .stage { --W: min(104vw, 58svh); }
+  .hand { width: var(--W); }
+  .hand.a { left: calc(50% - var(--W) * .57); top: calc(22% - var(--W) * .3); bottom: auto; right: auto; transform: translate(0, calc((1 - var(--p)) * -60vh)) rotate(-90deg); }
+  .hand.b { left: calc(50% - var(--W) * .43); top: calc(22% + var(--W) * .3); bottom: auto; right: auto; transform: translate(0, calc((1 - var(--p)) * 60vh)) rotate(-90deg); }
+  .flare, .spark { top: calc(22% + var(--W) * .37); }
+}
+.flare { position: absolute; left: 50%; top: 50%; width: 46vmin; height: 46vmin; margin: -23vmin 0 0 -23vmin; border-radius: 50%; z-index: 1;
+  background: radial-gradient(circle, rgba(255,235,220,.95) 0%, rgba(255,150,200,.45) 28%, transparent 66%);
+  opacity: calc(var(--p) * var(--p) * var(--p) * .9); transform: scale(calc(.4 + var(--p) * .8)); }
+
+.letter, .end { position: relative; z-index: 1; min-height: 100vh; min-height: 100svh; display: flex; align-items: center; justify-content: center; padding: 5rem 1.5rem; }
+.letter p { max-width: 36rem; margin: 0; font-size: clamp(1.3rem, 3.4vw, 1.75rem); line-height: 1.75; font-weight: 500; color: var(--cream); text-shadow: 0 0 14px rgba(255,190,215,.45); }
+.end { flex-direction: column; text-align: center; }
+.end .small { margin-bottom: .4rem; }
+.end h2 { font-family: "Abril Fatface", Georgia, serif; font-weight: 400; font-size: clamp(3.4rem, 17vw, 9rem); line-height: 1; margin: 0; text-shadow: 0 0 10px rgba(255,214,230,.9), 0 0 38px rgba(255,150,200,.6), 0 0 90px rgba(120,80,255,.7); }
+.end svg { width: 64px; height: 128px; margin-top: 1.6rem; filter: drop-shadow(0 0 14px rgba(255,150,190,.8)); }
+@media (prefers-reduced-motion: reduce) { .star { animation: none; } }
+</style>
+</head>
+<body>
+<div class="stars" id="stars" aria-hidden="true"></div>
+
+<div class="story" id="story">
+  <div class="stage" id="stage">
+    <p class="small">For my favorite person,</p>
+    <h1>Aditi</h1>
+    <span class="flare" aria-hidden="true"></span>
+
+    <svg class="hand a" viewBox="0 0 600 360" aria-hidden="true">
+<defs>
+<linearGradient id="skina" gradientUnits="userSpaceOnUse" x1="60" y1="60" x2="560" y2="320"><stop offset="0" stop-color="#ffd9bd"/><stop offset=".45" stop-color="#f09abb"/><stop offset=".85" stop-color="#6b46d6"/><stop offset="1" stop-color="#3a1fa8"/></linearGradient>
+<linearGradient id="shadea" gradientUnits="userSpaceOnUse" x1="560" y1="320" x2="60" y2="60"><stop offset="0" stop-color="#1a0f6a" stop-opacity=".75"/><stop offset=".6" stop-color="#1a0f6a" stop-opacity="0"/></linearGradient>
+<linearGradient id="rima" gradientUnits="userSpaceOnUse" x1="60" y1="60" x2="560" y2="320"><stop offset="0" stop-color="#fff6e8"/><stop offset=".55" stop-color="#ffc9d8" stop-opacity=".7"/><stop offset="1" stop-color="#fff" stop-opacity="0"/></linearGradient>
+<g id="sila"><path d="M1164.5 -258.1 Q775.1 -78.2 385.6 101.8 A52.0 52.0 0 0 0 424.4 198.2 Q829.9 58.2 1235.5 -81.9 Z"/><path d="M324.3 109.7 Q200.4 149.9 74.6 182.4 A14.0 14.0 0 0 0 81.4 209.6 Q209.5 185.8 335.7 154.3 Z"/><path d="M347.5 156.7 Q299.3 182.2 253.9 213.1 A17.0 17.0 0 0 0 270.1 242.9 Q317.9 216.5 368.5 195.3 Z"/><path d="M360.1 182.7 Q321.9 208.3 287.0 238.8 A16.0 16.0 0 0 0 305.0 265.2 Q342.8 238.8 383.9 217.3 Z"/><path d="M371.3 203.8 Q343.7 229.2 318.7 257.6 A14.0 14.0 0 0 0 337.3 278.4 Q365.7 253.8 396.7 232.2 Z"/><path d="M418.9 84.6 Q361.2 70.7 305.7 51.1 A16.0 16.0 0 0 0 294.3 80.9 Q346.6 109.0 401.1 131.4 Z"/><path d="M296 106 C330 70 420 72 446 124 C466 170 440 232 384 244 C326 256 280 214 284 164 C285 140 288 120 296 106 Z"/></g>
+<clipPath id="clipa"><use href="#sila"/></clipPath>
+</defs>
+<use href="#sila" fill="url(#rima)" stroke="url(#rima)" stroke-width="6" stroke-linejoin="round"/>
+<use href="#sila" fill="url(#skina)"/>
+<g clip-path="url(#clipa)">
+<rect x="-300" y="-100" width="1200" height="600" fill="url(#shadea)"/>
+<path d="M214 163 Q219 177 212 190" fill="none" stroke="#2a1587" stroke-opacity=".45" stroke-width="3" stroke-linecap="round"/><path d="M158 176 Q162 189 156 201" fill="none" stroke="#2a1587" stroke-opacity=".45" stroke-width="3" stroke-linecap="round"/><path d="M276 230 Q292 232 300 224" fill="none" stroke="#2a1587" stroke-opacity=".45" stroke-width="3" stroke-linecap="round"/><path d="M310 252 Q325 254 334 246" fill="none" stroke="#2a1587" stroke-opacity=".45" stroke-width="3" stroke-linecap="round"/>
+</g>
+<ellipse cx="85.6" cy="194.1" rx="8.4" ry="5.6" transform="rotate(165.7 85.6 194.1)" fill="#fff4e6" fill-opacity=".38"/><ellipse cx="308.4" cy="69.2" rx="9.6" ry="6.4" transform="rotate(-158.8 308.4 69.2)" fill="#fff4e6" fill-opacity=".38"/>
+</svg>
+
+    <svg class="hand b" viewBox="0 0 600 360" aria-hidden="true">
+<defs>
+<linearGradient id="skinb" gradientUnits="userSpaceOnUse" x1="620" y1="40" x2="40" y2="340"><stop offset="0" stop-color="#ffd9bd"/><stop offset=".45" stop-color="#f09abb"/><stop offset=".85" stop-color="#6b46d6"/><stop offset="1" stop-color="#3a1fa8"/></linearGradient>
+<linearGradient id="shadeb" gradientUnits="userSpaceOnUse" x1="40" y1="340" x2="620" y2="40"><stop offset="0" stop-color="#1a0f6a" stop-opacity=".75"/><stop offset=".6" stop-color="#1a0f6a" stop-opacity="0"/></linearGradient>
+<linearGradient id="rimb" gradientUnits="userSpaceOnUse" x1="620" y1="40" x2="40" y2="340"><stop offset="0" stop-color="#fff6e8"/><stop offset=".55" stop-color="#ffc9d8" stop-opacity=".7"/><stop offset="1" stop-color="#fff" stop-opacity="0"/></linearGradient>
+<g id="silb"><path d="M-468.6 799.9 Q-157.2 575.2 154.2 350.4 A54.0 54.0 0 0 0 95.8 259.6 Q-237.8 449.8 -571.4 640.1 Z"/><path d="M206.7 255.3 Q165.8 200.7 132.0 142.2 A16.0 16.0 0 0 0 104.0 157.8 Q129.2 221.2 161.3 280.7 Z"/><path d="M209.4 243.9 Q327.9 188.8 442.0 124.6 A14.0 14.0 0 0 0 430.0 99.4 Q312.4 156.3 190.6 204.1 Z"/><path d="M220.2 262.2 Q353.4 225.9 483.9 180.0 A14.5 14.5 0 0 0 476.1 152.0 Q343.3 189.8 207.8 217.8 Z"/><path d="M225.0 283.8 Q342.0 267.8 457.9 243.9 A14.0 14.0 0 0 0 454.1 216.1 Q337.1 232.1 219.0 240.2 Z"/><path d="M221.6 307.0 Q317.6 308.7 413.7 304.5 A12.5 12.5 0 0 0 414.3 279.5 Q318.3 277.3 222.4 269.0 Z"/><path d="M112 312 C92 250 134 196 206 190 C276 186 312 232 298 284 C284 338 208 352 148 336 Z"/></g>
+<clipPath id="clipb"><use href="#silb"/></clipPath>
+</defs>
+<use href="#silb" fill="url(#rimb)" stroke="url(#rimb)" stroke-width="6" stroke-linejoin="round"/>
+<use href="#silb" fill="url(#skinb)"/>
+<g clip-path="url(#clipb)">
+<rect x="-300" y="-100" width="1200" height="600" fill="url(#shadeb)"/>
+<path d="M300 150 Q310 160 312 172" fill="none" stroke="#2a1587" stroke-opacity=".4" stroke-width="3" stroke-linecap="round"/><path d="M345 188 Q352 198 351 210" fill="none" stroke="#2a1587" stroke-opacity=".4" stroke-width="3" stroke-linecap="round"/><path d="M340 244 Q346 254 342 266" fill="none" stroke="#2a1587" stroke-opacity=".4" stroke-width="3" stroke-linecap="round"/><path d="M215 262 Q235 272 250 266" fill="none" stroke="#2a1587" stroke-opacity=".4" stroke-width="3" stroke-linecap="round"/>
+</g>
+<ellipse cx="428.9" cy="115.4" rx="8.4" ry="5.6" transform="rotate(-25.4 428.9 115.4)" fill="#fff4e6" fill-opacity=".38"/><ellipse cx="472.1" cy="167.9" rx="8.7" ry="5.8" transform="rotate(-13.8 472.1 167.9)" fill="#fff4e6" fill-opacity=".38"/><ellipse cx="448.2" cy="230.7" rx="8.4" ry="5.6" transform="rotate(-5.2 448.2 230.7)" fill="#fff4e6" fill-opacity=".38"/><ellipse cx="407.0" cy="291.3" rx="7.5" ry="5.0" transform="rotate(5.8 407.0 291.3)" fill="#fff4e6" fill-opacity=".38"/><ellipse cx="122.1" cy="158.0" rx="9.6" ry="6.4" transform="rotate(-117.1 122.1 158.0)" fill="#fff4e6" fill-opacity=".38"/>
+</svg>
+
+    <p class="hint">scroll slowly</p>
+  </div>
+</div>
+
+<section class="letter">
+  <p>If I had to describe what you mean to me, I wouldn’t compare you to anyone else, because honestly, you were never meant to be compared. 🌷❤️ You remind me of a tulip—not because it’s simply beautiful, but because there’s something quietly special about it that makes you stop and notice. You have this way of making ordinary moments feel different just by being yourself. I love your little habits, your way of talking, your silly moments, your smile, and even the things you probably don’t realise I notice. You’re not special to me because you’re “better than everyone else”; you’re special because you’re you, and somehow my heart chose to see something in you that it doesn’t see anywhere else. If the world were a garden full of beautiful flowers, I wouldn’t need to search for the prettiest one—I’d already know which tulip I’d choose. 🌷🥹❤️</p>
+</section>
+
+<section class="end">
+  <p class="small">Forever yours,</p>
+  <h2>Rhethim</h2>
+  <svg viewBox="0 0 60 120" aria-hidden="true">
+    <path d="M30 46 C30 70 30 92 30 118" stroke="#7be0a4" stroke-width="4" fill="none" stroke-linecap="round"/>
+    <path d="M30 104 C14 100 8 86 8 70 C24 74 30 88 30 104Z" fill="#4fc487"/>
+    <path d="M30 92 C46 88 52 76 52 60 C36 64 30 78 30 92Z" fill="#35a56d"/>
+    <path d="M10 34 C6 16 13 4 22 2 C24 12 28 18 30 20 C32 18 36 12 38 2 C47 4 54 16 50 34 C47 50 13 50 10 34Z" fill="#ff8fb0"/>
+    <path d="M30 20 C21 27 19 40 30 50 C41 40 39 27 30 20Z" fill="#fff" fill-opacity=".3"/>
+  </svg>
+</section>
+
+<script>
+(function () {
+  var box = document.getElementById('stars');
+  var depths = [{ n: 70, s: .05, z: 1.4 }, { n: 45, s: .14, z: 2.2 }, { n: 22, s: .3, z: 3.2 }];
+  var layers = [];
+  var seed = 7;
+  function rnd() { seed = (seed * 16807) % 2147483647; return seed / 2147483647; }
+  depths.forEach(function (d) {
+    var l = document.createElement('div');
+    l.className = 'sl';
+    l.dataset.s = d.s;
+    for (var i = 0; i < d.n; i++) {
+      var st = document.createElement('i');
+      st.className = 'star';
+      var size = d.z * (.6 + rnd() * .7);
+      st.style.cssText = 'left:' + (rnd() * 100) + '%;top:' + (rnd() * 140) + '%;width:' + size + 'px;height:' + size + 'px;--o:' + (.4 + rnd() * .6) + ';animation-delay:' + (rnd() * 4) + 's';
+      l.appendChild(st);
+    }
+    box.appendChild(l);
+    layers.push(l);
+  });
+  var stageEl = document.getElementById('stage');
+  for (var k = 0; k < 14; k++) {
+    var sp = document.createElement('i');
+    sp.className = 'spark';
+    var ang = rnd() * 6.283, rad = 6 + rnd() * 20;
+    sp.style.setProperty('--sx', (Math.cos(ang) * rad).toFixed(1) + 'vmin');
+    sp.style.setProperty('--sy', (Math.sin(ang) * rad * .7).toFixed(1) + 'vmin');
+    sp.style.setProperty('--ss', (.5 + rnd() * 1.1).toFixed(2));
+    sp.style.animationDelay = (rnd() * 2) + 's';
+    stageEl.appendChild(sp);
+  }
+  var story = document.getElementById('story');
+  var stage = document.getElementById('stage');
+  var reduce = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+  function ease(t) { return 1 - Math.pow(1 - t, 2.2); }
+  function update() {
+    var y = window.pageYOffset || 0;
+    var span = story.offsetHeight - window.innerHeight;
+    var p = Math.max(0, Math.min(1, y / (span * .92)));
+    stage.style.setProperty('--p', reduce ? 1 : ease(p).toFixed(4));
+    if (!reduce) layers.forEach(function (l) { l.style.setProperty('--y', (-y * l.dataset.s) + 'px'); });
+    ticking = false;
+  }
+  var ticking = false;
+  window.addEventListener('scroll', function () { if (!ticking) { ticking = true; requestAnimationFrame(update); } }, { passive: true });
+  window.addEventListener('resize', update);
+  update();
+})();
+</script>
+</body>
+</html>
